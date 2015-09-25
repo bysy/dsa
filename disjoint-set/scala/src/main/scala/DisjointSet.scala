@@ -6,6 +6,8 @@ class DisjointSet private (
   def size: Int = parents.length
   def numGroups: Int =
     parents.zipWithIndex.count { case (p, i) => p==i }
+  def union(a: Int, b: Int) = this
+  def areConnected(a: Int, b: Int) = false
 }
 
 object DisjointSet {

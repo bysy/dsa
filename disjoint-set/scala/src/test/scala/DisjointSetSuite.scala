@@ -21,4 +21,15 @@ class DisjointSetSuite extends FunSuite
       DisjointSet(n).numGroups shouldBe n
     }
   }
+  test("union/areConnected example") {
+    val set = DisjointSet(10)
+      .union(0,1).union(2,1).union(8,9).union(2,8)
+    assert(set.areConnected(0,1))
+    assert(set.areConnected(0,2))
+    assert(set.areConnected(0,9))
+    assert(set.areConnected(1,8))
+    assert(!set.areConnected(0,5))
+    assert(!set.areConnected(5,6))
+    assert(!set.areConnected(6,9))
+  }
 }
