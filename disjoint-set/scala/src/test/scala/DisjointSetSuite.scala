@@ -53,4 +53,13 @@ class DisjointSetSuite extends FunSuite
       assert(origv == djs.areConnected(a, b))
     }
   }
+  test("root doesn't change result") {
+    forAll (djSet, smallPositiveInts) { (djs, a_) =>
+      val a = a_ % djs.size
+      val origv = djs.root(a)
+      assert(origv == djs.root(a))
+      assert(origv == djs.root(a))
+      assert(origv == djs.root(a))
+    }
+  }
 }
