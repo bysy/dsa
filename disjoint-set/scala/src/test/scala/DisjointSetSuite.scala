@@ -45,4 +45,12 @@ class DisjointSetSuite extends FunSuite
     assert(!set.areConnected(5,6))
     assert(!set.areConnected(6,9))
   }
+  test("areConnected doesn't change result") {
+    forAll (djSet, smallPositiveInts, smallPositiveInts) { (djs,a_,b_) =>
+      val (a,b) = (a_ % djs.size, b_ % djs.size)
+      val origv = djs.areConnected(a, b)
+      assert(origv == djs.areConnected(a, b))
+      assert(origv == djs.areConnected(a, b))
+    }
+  }
 }
