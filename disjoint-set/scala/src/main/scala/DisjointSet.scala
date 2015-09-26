@@ -1,5 +1,9 @@
 /**
- * Created by Benjamin on 9/25/15.
+ * Provide Disjoint Set data structure and algorithm.
+ * https://en.wikipedia.org/wiki/Disjoint-set_data_structure
+ *
+ * Also known as union-find or merge-find. The find operation
+ * is called root here.
  */
 class DisjointSet private (
   private val parents : Array[Int]) {

@@ -3,7 +3,7 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers, Tag}
 
 /**
- * Created by Benjamin on 9/25/15.
+ * Test DisjointSet.
  */
 class DisjointSetSuite extends FunSuite
   with GeneratorDrivenPropertyChecks with Matchers {
