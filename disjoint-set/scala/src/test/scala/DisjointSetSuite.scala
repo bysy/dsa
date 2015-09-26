@@ -9,6 +9,19 @@ class DisjointSetSuite extends FunSuite
   with GeneratorDrivenPropertyChecks with Matchers {
 
   val smallPositiveInts = for {n <- Gen.choose(0,1000)} yield n
+
+  val djSet: Gen[DisjointSet] = {
+    for {
+      size <- Gen.choose(1,30)
+      set = DisjointSet(size)
+      numU <- Gen.choose(0,2*size)
+      pair = for { a <- Gen.choose(0,size-1)
+                   b <- Gen.choose(0,size-1) } yield (a,b)
+      unions <- Gen.containerOfN[List,(Int,Int)](numU, pair)
+    } yield unions.toArray.foldLeft(set) {
+      case (s,(i,j)) => s.union(i,j)
+    }
+  }
   val creationTag = Tag("creation")
 
   test("initial state array has expected length", creationTag) {
